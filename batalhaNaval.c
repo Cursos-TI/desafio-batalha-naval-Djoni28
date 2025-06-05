@@ -1,22 +1,28 @@
 #include <stdio.h>
 
+
 int main() {
-    // DESAFIO - NÍVEL NOVATO
+    // DESAFIO - NÍVEL INTERMEDIÁRIO
 
     // Declarando a Matriz
-    int oceano [10] [11] = {
-        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    int oceano [10] [10] = {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
-    char linha[11] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'};
+    char coluna[11] = {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'}; // Vetor que irá definir a coluna
+    int linha[10] = {0}; // Vetor que irá definir a linha
+
+    for (int x = 0; x < 10; x++) {
+        linha[x] = x + 1;
+    }
 
     // Navio na horizontal
     for (int nav1 = 2; nav1 < 5; nav1++) {
@@ -28,16 +34,26 @@ int main() {
     oceano[nav2][8] = 3;
     }
 
-    // Mostrando o campo
-    for (int letra = 0; letra < 11; letra++) {
-        printf("%c   ", linha[letra]); }
-        printf("\n");
-    for (int i = 0; i <= 9; i++) {
-        for (int j = 0; j <= 10; j++) {
-            printf("%d   ", oceano[i][j]);
-        }
-        printf("\n");
+    // Navio na Diagonal
+    for( int k = 0; k < 3; k++) {
+        oceano[7+k][3+k] = 3;
     }
 
+    for( int k = 0; k < 3; k++) {
+        oceano[5+k][2-k] = 3;
+    }
+
+    // Mostrando o campo
+    for (int letra = 0; letra <= 10; letra++) {
+        printf("%c   ", coluna[letra]); }
+        printf("\n");
+
+        for (int i = 0; i <= 9; i++) {
+        printf("%d  ", linha[i]);
+            for (int j = 0; j <= 9; j++) {
+                printf("%d   ", oceano[i][j]);
+            }
+            printf("\n");
+        }
     return 0;
 }
